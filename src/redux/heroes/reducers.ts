@@ -1,7 +1,7 @@
 import { ACTION_TYPES, Actions } from './actions';
-import { HeroesState, initialHeroesState } from './state';
+import { initialHeroesState } from './state';
 
-export default function (state: HeroesState = initialHeroesState, action: Actions) {
+export default function (state = initialHeroesState, action: Actions) {
   switch (action.type) {
     case ACTION_TYPES.ADD:
       let id = state.length;
@@ -25,4 +25,3 @@ export default function (state: HeroesState = initialHeroesState, action: Action
       return state;
   }
 }
-

@@ -2,26 +2,16 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { HeroType } from '../../redux/heroes/state';
+import { Hero } from '../../redux/heroes/state';
 import { RootState } from '../../redux/rootState';
+import HeroSearch from '../heroSearch/HeroSearch';
 import * as styles from './dashboard.less';
 
 interface InjectedProps {
-  heroes: HeroType[];
+  heroes: Hero[];
 }
 
 class Dashboard extends React.Component<InjectedProps> {
-  renderHero(hero: HeroType) {
-    return (
-      <Link key={hero.id} to={`/detail/${hero.id}`} className={styles.link}>
-        <div className={styles.module}>
-          <h4 className={styles.heroName}>{hero.name}</h4>
-        </div>
-      </Link>
-    );
-  }
-
-  // TODO: implement HeroSearch
   render() {
     return (
       <div className={styles.dashboard}>
@@ -29,8 +19,18 @@ class Dashboard extends React.Component<InjectedProps> {
         <div className={styles.grid}>
           {this.props.heroes.map(this.renderHero)}
         </div>
-        {/*<HeroSearch />*/}
+        <HeroSearch />
       </div>
+    );
+  }
+
+  private renderHero(hero: Hero) {
+    return (
+      <Link key={hero.id} to={`/detail/${hero.id}`} className={styles.link}>
+        <div className={styles.module}>
+          <h4 className={styles.heroName}>{hero.name}</h4>
+        </div>
+      </Link>
     );
   }
 }

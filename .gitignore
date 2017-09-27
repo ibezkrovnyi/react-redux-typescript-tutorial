@@ -1,6 +1,5 @@
 .idea
 .vscode
 dist
-/tmp
 node_modules
 package-lock.json

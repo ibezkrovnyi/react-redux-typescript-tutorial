@@ -14,6 +14,7 @@ module.exports = {
 		js: './src/index.tsx'
 	},
 	output: {
+		publicPath: '/',
 		path: path.resolve(__dirname, 'dist'),
 		filename: `${appName}.js`,
 		library: appName,
@@ -24,8 +25,8 @@ module.exports = {
 			{
 				enforce: 'pre',
 				test: /\.(ts|tsx)$/,
-				exclude: [ 'node_modules' ],
-				use: [ 'ts-loader', 'source-map-loader' ]
+				exclude: ['node_modules'],
+				use: ['ts-loader', 'source-map-loader']
 			}, {
 				test: /\.html$/,
 				loader: 'html-loader'
@@ -48,7 +49,7 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: [ '.ts', '.tsx', '.js', '.jsx' ]
+		extensions: ['.ts', '.tsx', '.js', '.jsx']
 	},
 	plugins: [
 		new webpack.DefinePlugin({

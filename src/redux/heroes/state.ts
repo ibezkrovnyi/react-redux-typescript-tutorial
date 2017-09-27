@@ -1,4 +1,4 @@
-export const initialHeroesState: HeroesState = [
+export const initialHeroesState: Hero[] = [
   { id: 0, name: 'Zero' },
   { id: 11, name: 'Mr. Nice' },
   { id: 12, name: 'Narco' },
@@ -12,10 +12,7 @@ export const initialHeroesState: HeroesState = [
   { id: 20, name: 'Tornado' },
 ];
 
-export type HeroesState = HeroType[];
-
-// TODO: rename type
-export interface HeroType {
+export interface Hero {
   id: number;
   name: string;
 }

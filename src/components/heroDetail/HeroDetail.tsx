@@ -4,16 +4,16 @@ import { RouteComponentProps } from 'react-router';
 import { Dispatch } from 'redux';
 
 import { heroesActions } from '../../redux/heroes/actions';
-import { HeroType } from '../../redux/heroes/state';
+import { Hero } from '../../redux/heroes/state';
 import { ThunkAction } from '../../redux/reduxThunk';
 import { RootState } from '../../redux/rootState';
 
 interface State {
-  hero?: HeroType;
+  hero?: Hero;
 }
 
 interface InjectedProps {
-  heroes: HeroType[];
+  heroes: Hero[];
   save: () => ThunkAction;
   edit: typeof heroesActions.edit;
 }
@@ -25,19 +25,11 @@ class HeroDetail extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
+
     const heroId = Number(this.props.match.params.heroId);
-    const hero = this.props.heroes.find(hero => hero.id === heroId);
-    this.state = { hero };
-  }
-
-  goBack = () => window.history.back();
-
-  save = async () => {
-    if (!this.inputRef) return;
-
-    this.props.edit(this.state.hero!.id, this.inputRef.value);
-    await this.props.save();
-    this.goBack();
+    this.state = {
+      hero: this.props.heroes.find(hero => hero.id === heroId),
+    };
   }
 
   render() {
@@ -48,7 +40,8 @@ class HeroDetail extends React.Component<Props, State> {
       <div>
         <h2>{hero.name} details!</h2>
         <div>
-          <label>id: </label>{hero.id}</div>
+          <label>id: </label>{hero.id}
+        </div>
         <div>
           <label>name: </label>
           <input type="text" placeholder="name" defaultValue={hero.name} ref={ref => this.inputRef = ref} />
@@ -57,6 +50,18 @@ class HeroDetail extends React.Component<Props, State> {
         <button onClick={this.save}> Save</button>
       </div>
     );
+  }
+
+  private goBack() {
+    window.history.back();
+  }
+
+  private save = async () => {
+    if (!this.inputRef) return;
+
+    this.props.edit(this.state.hero!.id, this.inputRef.value);
+    await this.props.save();
+    this.goBack();
   }
 }
 

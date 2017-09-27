@@ -4,26 +4,26 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import { heroesActions } from '../../redux/heroes/actions';
-import { HeroType } from '../../redux/heroes/state';
+import { Hero } from '../../redux/heroes/state';
 import { RootState } from '../../redux/rootState';
 import * as styles from './heroes.less';
 
 interface InjectedProps {
   add: typeof heroesActions.add;
   delete: typeof heroesActions.delete;
-  heroes: HeroType[];
+  heroes: Hero[];
 }
 
 interface State {
-  selected: HeroType | null;
+  selected: Hero | null;
 }
 
 class Heroes extends React.Component<InjectedProps, State> {
-  private inputElement: HTMLInputElement;
-
   state: State = {
     selected: null,
   };
+
+  private inputElement: HTMLInputElement;
 
   componentWillReceiveProps(nextProps: InjectedProps) {
     if (this.state.selected && !nextProps.heroes.find(hero => hero.id === this.state.selected!.id)) {
@@ -31,7 +31,6 @@ class Heroes extends React.Component<InjectedProps, State> {
     }
   }
 
-  // TODO: implement HeroSearch
   render() {
     return (
       <div>
@@ -51,7 +50,7 @@ class Heroes extends React.Component<InjectedProps, State> {
     );
   }
 
-  private renderHeroListItem = (hero: HeroType) => (
+  private renderHeroListItem = (hero: Hero) => (
     <li
       onClick={() => this.setState({ selected: hero })}
       className={this.state.selected === hero ? styles.selected : ''}

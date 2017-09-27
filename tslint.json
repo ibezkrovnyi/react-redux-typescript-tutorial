@@ -16,6 +16,9 @@
     "import-name": false,
     "jsx-no-lambda": false,
     "max-line-length": false,
+    "object-literal-sort-keys": false,
+    "no-shadowed-variable": false,
+    "jsx-boolean-value": false,
     "curly": [true, "ignore-same-line"]
   },
   "type-check": true
