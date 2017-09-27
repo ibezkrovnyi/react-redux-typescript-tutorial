@@ -1,0 +1,66 @@
+.title {
+  text-align    : center;
+  margin-bottom : 0;
+}
+
+.heroName {
+  position : relative;
+}
+
+.grid {
+  margin : 0;
+  padding : 10px 0;
+}
+
+.grid > [class*='lin']:last-of-type {
+  padding-right : 20px;
+}
+
+.link {
+  float           : left;
+  padding-right   : 20px;
+  padding-bottom  : 20px;
+  width           : 25%;
+  text-decoration : none;
+
+  -webkit-box-sizing : border-box;
+  -moz-box-sizing    : border-box;
+  box-sizing         : border-box;
+
+  &:last-of-type {
+	  padding-right : 0;
+  }
+}
+
+.module {
+  padding          : 20px;
+  text-align       : center;
+  color            : #eeeeee;
+  max-height       : 120px;
+  min-width        : 120px;
+  background-color : #607d8b;
+  border-radius    : 2px;
+}
+
+.module:hover {
+  background-color : #eeeeee;
+  cursor           : pointer;
+  color            : #607d8b;
+}
+
+@media (max-width : 600px) {
+  .module {
+    font-size  : 10px;
+    max-height : 75px;
+  }
+}
+
+@media (max-width : 1024px) {
+  .grid {
+  	margin: 0;
+  }
+
+  .module {
+	  min-width: 60px;
+  }
+}
