@@ -1,4 +1,4 @@
-import { ThunkAction } from '../reduxThunk';
+import { ThunkAction } from '../helpers';
 
 export enum ACTION_TYPES {
   ADD = 'HEROES.ADD',

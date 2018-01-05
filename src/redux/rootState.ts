@@ -1,4 +1,4 @@
-import { Hero } from './../../tmp/src/app/hero';
+import { Hero } from './heroes/state';
 
 export interface RootState {
   heroes: Hero[];

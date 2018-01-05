@@ -5,7 +5,7 @@ import { Dispatch } from 'redux';
 
 import { heroesActions } from '../../redux/heroes/actions';
 import { Hero } from '../../redux/heroes/state';
-import { ThunkAction } from '../../redux/reduxThunk';
+import { ThunkAction } from '../../redux/helpers';
 import { RootState } from '../../redux/rootState';
 
 interface State {
